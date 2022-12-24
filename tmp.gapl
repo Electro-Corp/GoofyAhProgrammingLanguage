@@ -1,0 +1,14 @@
+data{
+}
+entry{
+
+
+  push 0
+  add
+  out
+
+
+
+
+
+}
