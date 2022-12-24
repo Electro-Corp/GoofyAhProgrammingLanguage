@@ -3,20 +3,15 @@ include stdlib.gapl
 data{
   let foo 10
   let bar 4
-  push 3 
-  push 4 
 }
 // Commands are exceuted from here
 entry{ 
-  add
-  out
   push foo
-  add
-  out
   push bar
   add
   out
   // retrive last item from output stack and have a var set to it
   lout foo
+  // from stdlib.gapl
   puts foo
 }

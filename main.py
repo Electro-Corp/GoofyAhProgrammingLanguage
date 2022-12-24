@@ -92,6 +92,11 @@ def parse(fileName):
         exc(funcs.index(lines[locY].strip(' ').split(" ")[0].strip('\n')))
         locY += 1
         # do the function idk lamo
+      elif("let" in lines[locY]):
+        v = lines[locY].strip(' ').split(" ")
+        vars.append(v[1].strip('\n'))
+        data.append(int(v[2].strip('\n')))
+        locY += 1
       else:
         print("ERROR, "+lines[locY] +" is not a command.")
         print(lines[locY].strip(' ').split(" "))
@@ -106,11 +111,11 @@ def exc(ind):
     g.write("entry{\n")
     while(True):
       try:
-        g.write(str(fprog[ind][ind][s]))
+        g.write(str(fprog[ind][ind][s]).strip(''))
         g.write('\n');
         s+= 1;
       except Exception as e:
-        print("EEEE: "+str(s)+str(e))
+        #print("EEEE: "+str(s)+str(e))
         break
     g.write("}\n")
   parse("tmp.gapl")
@@ -119,7 +124,12 @@ try:
   parse(sys.argv[1])
 except Exception as e :
   print("Error: "+str(e))
-  print("at: "+str(e.line))
+  
   print("Stack dump:")
   print(stack)
+  print(outstack)
   #print(fprog)
+print("===== Program finished. Stack trace: =====")
+print(stack)
+print("// Output stack")
+print(outstack)
