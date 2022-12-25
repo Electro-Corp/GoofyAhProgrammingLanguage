@@ -119,7 +119,7 @@ def exc(ind):
     g.write("entry{\n")
     while(True):
       try:
-        g.write(str(fprog[ind][ind][s]).strip(''))
+        g.write(str(fprog[ind][s]).strip(''))
         g.write('\n');
         s+= 1;
       except Exception as e:

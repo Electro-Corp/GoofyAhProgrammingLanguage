@@ -14,5 +14,5 @@ entry{
   push foo
   // from stdlib.gapl
   puts foo
-  goofy
+  
 }

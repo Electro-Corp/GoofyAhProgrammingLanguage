@@ -5,6 +5,3 @@ func puts{
   add
   out
 }
-func goofy{
-  out
-}
