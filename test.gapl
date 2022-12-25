@@ -10,8 +10,9 @@ entry{
   push bar
   add
   out
-  // retrive last item from output stack and have a var set to it
-  lout foo
+  // get ready for puts command
+  push foo
   // from stdlib.gapl
   puts foo
+  goofy
 }

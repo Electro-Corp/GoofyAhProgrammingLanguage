@@ -1,11 +1,14 @@
 import sys
+import traceback
 stack = []
 outstack = []
 vars = []
 data = []
 funcs = []
-fprog = [[[""]*10]*10]*10
+fprog = [[""]*50]*50
 debug = False
+g = -1
+z = -3
 def getVar(name):
   if(name in vars):
     return data[vars.index(name)]
@@ -15,14 +18,15 @@ def setVar(name, val):
   if(name in vars):
     data[vars.index(name)] = val 
 def pFunc(file):
-  
+  global funcs
+  global fprog
+  global z
+  global g
   with open(file, "r") as f:
     fdata = f.readlines()
-  g = -1
-  d = 0
-  z = -3
-  for i in range(len(fdata)):
-    #print(str(g)+","+str(d)+","+str(z))
+  
+  for i in range(len(fdata) - 1):
+    #print(str(g)+","+str(z))
     #print(fprog)
     if('\n' in fdata[i]):
       z+= 1;
@@ -30,12 +34,15 @@ def pFunc(file):
       z = 0;
       g += 1
       funcs.append(fdata[i].strip('{').strip("\n").strip("func").strip('').strip('{').strip(' '))
-    elif("}" in fdata[i]):
-      d += 1
+    #elif("}" in fdata[i]):
+      
     elif ("//" not in fdata[i]):
-      #print(str(g)+","+str(d)+","+str(z))
-      fprog[g][d][z] = fprog[g][d][z] + fdata[i].strip('\n')
-  print(funcs)
+      print(str(g)+","+str(z))
+      try:
+        fprog[g][z] = str(fprog[g][z]) + fdata[i].strip('\n')
+      except:
+        print("ERROR AT: ("+str(g)+","+str(z)+")")
+  #print(funcs)
   #print(fprog)
 def parse(fileName):
   global stack
@@ -85,10 +92,10 @@ def parse(fileName):
       elif("out" in lines[locY]):
         print(outstack[len(outstack)-1])
         locY += 1
-      elif("lout" in lines[locY]):
+      elif("los" in lines[locY]):
         setVar((lines[locY].strip(' ').split(" ")
                 [1].strip('\n')),outstack[len(outstack)-1])
-      elif(lines[locY].strip(' ').split(" ")[0] in funcs):
+      elif(lines[locY].strip(' ').strip('\n').split(" ")[0] in funcs):
         exc(funcs.index(lines[locY].strip(' ').split(" ")[0].strip('\n')))
         locY += 1
         # do the function idk lamo
@@ -100,9 +107,10 @@ def parse(fileName):
       else:
         print("ERROR, "+lines[locY] +" is not a command.")
         print(lines[locY].strip(' ').split(" "))
-        exit(1)
+        break
 def exc(ind):
   s = 0
+  #print("IND: "+str(ind))
   d = open("tmp.gapl","w")
   with open("tmp.gapl","a") as g:
     
@@ -124,12 +132,18 @@ try:
   parse(sys.argv[1])
 except Exception as e :
   print("Error: "+str(e))
-  
+  print(traceback.format_exc())
   print("Stack dump:")
   print(stack)
   print(outstack)
   #print(fprog)
-print("===== Program finished. Stack trace: =====")
+print("===== Program finished.  Details: =====")
+print("// Stack")
 print(stack)
 print("// Output stack")
 print(outstack)
+print("// Loaded functions ")
+print(funcs)
+print("? Would you like to see loaded function data ? (y/n)")
+if(input("") == 'y'):
+  print(fprog)

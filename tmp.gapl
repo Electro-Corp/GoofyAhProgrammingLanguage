@@ -1,14 +1,9 @@
 data{
 }
 entry{
-
-
-  let tmp 0
-  push tmp
-  add
-  out
-
-
-
-
+ 
+ 
+o
+u
+t
 }
