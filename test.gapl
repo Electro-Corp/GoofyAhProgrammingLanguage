@@ -14,5 +14,7 @@ entry{
   push foo
   // from stdlib.gapl
   puts foo
-  whoAsked haha
+  push foo
+  push bar
+  testCmp .
 }

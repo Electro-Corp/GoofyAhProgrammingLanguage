@@ -6,6 +6,7 @@ vars = []
 data = []
 funcs = []
 fprog = [[""]*50 for _ in range(50)] 
+cmp = 0
 debug = False
 g = 0
 z = 0
@@ -50,6 +51,7 @@ def pFunc(file):
 def parse(fileName):
   global stack
   global outstack
+  global cmp
   locX = 0
   locY = 0
   pnt = ''
@@ -108,6 +110,18 @@ def parse(fileName):
         vars.append(v[1].strip('\n'))
         data.append(int(v[2].strip('\n')))
         locY += 1
+      #
+      # COMPARE BIT SECTION
+      #
+      elif ("cmp" in lines[locY]):
+        if(stack[len(stack) -1 ] == stack[len(stack) -2]):
+          cmp = 1
+        else:
+          cmp = 0
+        locY += 1
+      elif ("lmp" in lines[locY]):
+        stack.append(cmp)
+        locY += 1
       else:
         print("ERROR, "+lines[locY] +" is not a command.")
         print(lines[locY].strip(' ').split(" "))
@@ -150,6 +164,8 @@ print("// Stack")
 print(stack)
 print("// Output stack")
 print(outstack)
+print("// Compare Bit")
+print(str(cmp))
 print("// Loaded functions ")
 print(funcs)
 print("? Would you like to see loaded function data ? (y/n)")

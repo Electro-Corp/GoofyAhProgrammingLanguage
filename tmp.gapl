@@ -10,11 +10,11 @@ entry{
 
 
   let goofy 10
-  let goofy1 59
+  let goofy1 10
   push goofy
   push goofy1
-  add
-  out
+  cmp
+  lmp
 
 
 
