@@ -5,3 +5,11 @@ func puts{
   add
   out
 }
+func whoAsked{
+  let goofy 10
+  let goofy1 59
+  push goofy
+  push goofy1
+  add
+  out
+}

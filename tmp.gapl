@@ -3,15 +3,18 @@ data{
 entry{
 
 
-  let tmp 0
-  push tmp
+
+
+
+
+
+
+  let goofy 10
+  let goofy1 59
+  push goofy
+  push goofy1
   add
   out
-
-
-
-
-
 
 
 
