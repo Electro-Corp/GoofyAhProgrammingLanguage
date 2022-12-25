@@ -53,3 +53,7 @@ func puts{
   // code
 }
 ```
+To import the file in the main source, use `include`. Example:
+```
+include stdlib.gapl
+```
