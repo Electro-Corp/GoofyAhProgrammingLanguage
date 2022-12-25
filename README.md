@@ -2,21 +2,6 @@
 Goofy ahhhhhhhh <br>
 Table of Contents:
 > Users Guide
-
-```
-data{
-  // define two vars
-  let x 1
-  let y 1
-  // push to the staack
-  push x
-  push y
-}
-entry{
-  // add the two last items pushed to the stack
-  add
-}
-```
 ## Users Guide
 ### Basic
 Each program must have the two following sections: 
