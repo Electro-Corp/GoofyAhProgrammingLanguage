@@ -4,11 +4,11 @@ Table of Contents:
 > Users Guide
 ## Users Guide
 ### Basic
-Each program must have the two following sections: 
-* data
-* entry
 The data segment is reserved for declearing variables or pushing constants to the stack. <br>
 The entry area is for the main exceution of the program. <br>
+Each program must have the two following sections: 
+* data
+* entry 
 Example: <br>
 ```
 data{
