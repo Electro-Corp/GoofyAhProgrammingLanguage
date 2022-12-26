@@ -1,0 +1,22 @@
+include stdlib.gapl
+data{
+  let final 30
+  let x 1
+  let g 1
+  let done 69
+}
+// Now test (lol)
+entry{
+  push x
+  push g
+  add
+  out
+  los x
+  push x
+  push final
+  cmp
+  jcb 20
+  goto 9
+  push done
+  puts done
+}

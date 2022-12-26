@@ -63,7 +63,6 @@ def parse(fileName):
       pFunc((lines[locY].strip(' ').split(" ")[1].strip('\n')))
       locY += 1
     while(lines[locY][locX] != '}'):
-      #print(lines[locY])
       if("//" in lines[locY]):    # ignore comments
         locY += 1
         if(debug):
@@ -83,6 +82,7 @@ def parse(fileName):
     # exceute the program (lamo)
     locY += 1
     while(lines[locY][locX] != '}'):
+      #print(str(locY)+"| "+lines[locY])
       if("//" in lines[locY] or "entry" in lines[locY] or lines[locY] == '\n'):
         locY += 1
       elif("push" in lines[locY]):
@@ -98,8 +98,11 @@ def parse(fileName):
         print(outstack[len(outstack)-1])
         locY += 1
       elif("los" in lines[locY]):
+       # print("Los got a request for var: "+(lines[locY].strip(' ').split(" ")
+       #         [1].strip('\n'))+", which will be set to: "+str(outstack[len(outstack)-1]))
         setVar((lines[locY].strip(' ').split(" ")
                 [1].strip('\n')),outstack[len(outstack)-1])
+        locY += 1
       elif(lines[locY].strip(' ').strip('\n').split(" ")[0] in funcs):
         exc(funcs.index(lines[locY].strip(' ').split(" ")[0].strip('\n')))
         locY += 1
@@ -122,10 +125,18 @@ def parse(fileName):
       elif ("lmp" in lines[locY]):
         stack.append(cmp)
         locY += 1
+      elif ("jcb" in lines[locY]):
+        if(cmp == 1):
+          locY = int(lines[locY].strip(' ').split(" ")[1].strip('\n'))
+        else:
+          locY += 1
+      elif ("goto" in lines[locY]):
+        locY = int(lines[locY].strip(' ').split(" ")[1].strip('\n'))
       else:
         print("ERROR, "+lines[locY] +" is not a command.")
         print(lines[locY].strip(' ').split(" "))
         break
+      #print(stack)
 def exc(ind):
   global fprog
   s = -3
