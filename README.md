@@ -81,11 +81,15 @@ lspecInd 2
 ```
 ### NOTE: FOR FILES ITS RECOMMENDED TO USE THE STDLIB/FILEIO.GAPL for convenience
 #### lfile
-Loads a file based on the last item on the charstack. Ex:
+Loads a file based on the last item on the charstack, with the specified mode. Ex:
 ```
 lchar helloworld.txt
-lfile
+lfile a
 ```
+Modes:
+* a = Append
+* w = Write
+* r = Read
 #### wfile
 Appends to the current loaded file with the last item on the charstack. Ex:
 ```
