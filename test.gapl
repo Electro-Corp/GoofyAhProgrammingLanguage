@@ -1,9 +1,11 @@
 include stdlib/stdlib.gapl
+include stdlib/fileio.gapl
 include inc1.gapl
 // Define vars here (or push items to the stack, idc)
 data{
   let foo 10
   let bar 4
+  lchar tmp.gapl
 }
 // Commands are exceuted from here
 entry{ 
@@ -18,4 +20,8 @@ entry{
   push foo
   push bar
   count .
+  // filetest
+  lchar hello!
+  lchar test.txt
+  appendToFile
 }

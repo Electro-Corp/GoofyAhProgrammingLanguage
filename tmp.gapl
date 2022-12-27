@@ -1,19 +1,7 @@
 data{
 }
 entry{
-  let final 10
-  let x 1
-  let g 1
-  let done 69
-  push x
-  push g
-  add
-  out
-  los x
-  push x
-  push final
-  cmp
-  jcb 18
-  goto 4
-  push done
+  lfile
+  lspecInd 2
+  wfile
 }

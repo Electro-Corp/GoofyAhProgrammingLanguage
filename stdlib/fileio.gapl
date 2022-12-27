@@ -1,0 +1,9 @@
+func appendToFile{
+  // This function requires the charstack to look like this:
+  // [dataToAppend]
+  // [  fileName  ]
+  // so.. do that ig
+  lfile
+  lspecInd 2
+  wfile
+}

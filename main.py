@@ -2,6 +2,7 @@ import sys
 import traceback
 stack = []
 outstack = []
+charstack = []
 vars = []
 data = []
 funcs = []
@@ -10,6 +11,7 @@ cmp = 0
 debug = False
 g = -1
 z = 0
+p = None
 def getVar(name):
   if(name in vars):
     return data[vars.index(name)]
@@ -41,12 +43,8 @@ def pFunc(file):
      # z = 0 
       g+=1
     elif ("//" not in fdata[i]):
-      
-      #print(str(g)+","+str(z))
       try:
-       # print("GOOFY AHHH: "+fdata[i].strip('\n'))
         fprog[g][z] =  fdata[i].strip('\n')
-        #print("Got: "+fprog[g][z])
       except:
         print("ERROR AT: ("+str(g)+","+str(z)+")")
   #print("Done")
@@ -85,6 +83,9 @@ def parse(fileName):
         vars.append(v[1].strip('\n'))
         data.append(int(v[2].strip('\n')))
         locY += 1
+      elif("lchar" in lines[locY]):
+        charstack.append((lines[locY].strip(' ').split(" ")[1].strip('\n')))
+        locY += 1
     # exceute the program (lamo)
     locY += 1
     while(lines[locY][locX] != '}'):
@@ -93,6 +94,12 @@ def parse(fileName):
         locY += 1
       elif("push" in lines[locY]):
         stack.append(getVar(lines[locY].strip(' ').split(" ")[1].strip('\n')))
+        locY += 1
+      elif("lchar" in lines[locY]):
+        charstack.append((lines[locY].strip(' ').split(" ")[1].strip('\n')))
+        locY += 1
+      elif("lspecInd" in lines[locY]):
+        charstack.append(charstack[len(charstack) - int(lines[locY].strip(' ').split(" ")[1].strip('\n'))])
         locY += 1
       elif("add" in lines[locY]):
         outstack.append(int((stack[len(stack) -1 ])+  int(stack[len(stack)-2])))
@@ -136,8 +143,18 @@ def parse(fileName):
           locY = int(lines[locY].strip(' ').split(" ")[1].strip('\n'))
         else:
           locY += 1
+      # GOOFY AHH
       elif ("goto" in lines[locY]):
         locY = int(lines[locY].strip(' ').split(" ")[1].strip('\n'))
+      #
+      # File features
+      #
+      elif ("lfile" in lines[locY]):
+        p = open(charstack[len(charstack)-1],"a")
+        locY += 1
+      elif ("wfile" in lines[locY]):
+        p.write(charstack[len(charstack)-1])
+        locY += 1 
       else:
         print("ERROR, "+lines[locY] +" is not a command.")
         print(lines[locY].strip(' ').split(" "))
@@ -180,6 +197,8 @@ print("// Stack")
 print(stack)
 print("// Output stack")
 print(outstack)
+print("// Char stack")
+print(charstack)
 print("// Compare Bit")
 print(str(cmp))
 print("// Loaded functions ")
