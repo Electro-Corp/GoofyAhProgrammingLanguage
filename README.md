@@ -5,6 +5,8 @@ Table of Contents:
 ## IMPORTANT LINKS:
 Guide for the standard library: https://github.com/Electro-Corp/GoofyAhProgrammingLanguage/blob/main/stdlib/README.md#stdlib
 ## Users Guide
+### Run a program
+`python3 main.py [FILE].gapl` 
 ### Basic
 The data segment is reserved for declearing variables or pushing constants to the stack. <br>
 The entry area is for the main exceution of the program. <br>
