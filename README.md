@@ -2,6 +2,8 @@
 Goofy ahhhhhhhh <br>
 Table of Contents:
 > Users Guide
+## IMPORTANT LINKS:
+Guide for the standard library: https://github.com/Electro-Corp/GoofyAhProgrammingLanguage/blob/main/stdlib/README.md#stdlib
 ## Users Guide
 ### Basic
 The data segment is reserved for declearing variables or pushing constants to the stack. <br>
