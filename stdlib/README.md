@@ -11,3 +11,5 @@ This function requires the charstack to look like this:
 [  fileName  ]
 ```
 so.. do that ig
+#### `loadFileCharStack`
+Reads file into charstack.
