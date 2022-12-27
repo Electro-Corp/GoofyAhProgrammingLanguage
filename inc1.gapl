@@ -1,12 +1,8 @@
-include stdlib.gapl
-data{
+func count{
   let final 10
   let x 1
   let g 1
   let done 69
-}
-// Now test (lol)
-entry{
   push x
   push g
   add
@@ -15,8 +11,8 @@ entry{
   push x
   push final
   cmp
-  jcb 20
-  goto 9
+  jcb 18
+  goto 4
   push done
   puts done
 }

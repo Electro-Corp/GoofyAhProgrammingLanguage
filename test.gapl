@@ -1,4 +1,5 @@
-include stdlib.gapl
+include stdlib/stdlib.gapl
+include inc1.gapl
 // Define vars here (or push items to the stack, idc)
 data{
   let foo 10
@@ -16,5 +17,5 @@ entry{
   puts foo
   push foo
   push bar
-  testCmp .
+  count .
 }

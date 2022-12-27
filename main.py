@@ -8,7 +8,7 @@ funcs = []
 fprog = [[""]*50 for _ in range(50)] 
 cmp = 0
 debug = False
-g = 0
+g = -1
 z = 0
 def getVar(name):
   if(name in vars):
@@ -19,17 +19,20 @@ def setVar(name, val):
   if(name in vars):
     data[vars.index(name)] = val 
 def pFunc(file):
+  #print("called (real)")
   global funcs
   global fprog
   global z
   global g
   with open(file, "r") as f:
+    g+=1
     fdata = f.readlines()
   
   for i in range(len(fdata) - 1):
     #print(str(g)+","+str(z))
     #print(fprog)
-    
+    if(fdata[i]):
+      z+=1
     if("{" in fdata[i]):
       #z = 0
       #g += 1
@@ -38,7 +41,7 @@ def pFunc(file):
      # z = 0 
       g+=1
     elif ("//" not in fdata[i]):
-      z+=1
+      
       #print(str(g)+","+str(z))
       try:
        # print("GOOFY AHHH: "+fdata[i].strip('\n'))
@@ -46,6 +49,7 @@ def pFunc(file):
         #print("Got: "+fprog[g][z])
       except:
         print("ERROR AT: ("+str(g)+","+str(z)+")")
+  #print("Done")
   #print(funcs)
   #print(fprog)
 def parse(fileName):
@@ -58,11 +62,13 @@ def parse(fileName):
   lines = []
   with open(fileName, "r") as f:
     # read data segment
+    #print(locY)
     lines = f.readlines()
-    if("include" in lines[locY]):
-      pFunc((lines[locY].strip(' ').split(" ")[1].strip('\n')))
-      locY += 1
+    
     while(lines[locY][locX] != '}'):
+      if("include" in lines[locY]):
+        pFunc((lines[locY].strip(' ').split(" ")[1].strip('\n')))
+        locY += 1
       if("//" in lines[locY]):    # ignore comments
         locY += 1
         if(debug):
@@ -143,15 +149,14 @@ def exc(ind):
   #print("IND: "+str(ind))
   d = open("tmp.gapl","w")
   with open("tmp.gapl","a") as g:
-    
     g.write("data{\n")
     g.write("}\n")
     g.write("entry{\n")
     while(True):
       try:
-        #print("AT: "+fprog[ind][s] +", I = "+str(ind)+", s="+str(s),)
-        g.write(str(fprog[ind][s]).strip(''))
-        g.write('\n');
+        if(fprog[ind][s] != ""):
+          g.write(str(fprog[ind][s]).strip(''))
+          g.write('\n');
         s+= 1;
         if(s == 50):
           break
