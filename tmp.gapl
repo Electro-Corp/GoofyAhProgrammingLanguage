@@ -1,7 +1,6 @@
 data{
 }
 entry{
-  lfile
-  lspecInd 2
-  wfile
+  lfile r
+  rfile
 }

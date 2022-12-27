@@ -150,10 +150,13 @@ def parse(fileName):
       # File features
       #
       elif ("lfile" in lines[locY]):
-        p = open(charstack[len(charstack)-1],"a")
+        p = open(charstack[len(charstack)-1], lines[locY].strip(' ').split(" ")[1].strip('\n'))
         locY += 1
       elif ("wfile" in lines[locY]):
         p.write(charstack[len(charstack)-1])
+        locY += 1 
+      elif ("rfile" in lines[locY]):
+        charstack.append(p.readlines())
         locY += 1 
       else:
         print("ERROR, "+lines[locY] +" is not a command.")

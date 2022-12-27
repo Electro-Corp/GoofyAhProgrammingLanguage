@@ -5,7 +5,6 @@ include inc1.gapl
 data{
   let foo 10
   let bar 4
-  lchar tmp.gapl
 }
 // Commands are exceuted from here
 entry{ 
@@ -21,7 +20,14 @@ entry{
   push bar
   count .
   // filetest
+  // clears file
+  lchar test.txt
+  lfile w
   lchar hello!
   lchar test.txt
+  // write to file
   appendToFile
+  lchar test.txt
+  // read file
+  loadFileCharStack
 }

@@ -5,13 +5,3 @@ func puts{
   add
   out
 }
-func testCmp{
-  let goofy 10
-  let goofy1 10
-  push goofy
-  push goofy1
-  // compare last two items on the stack
-  cmp
-  // put compare bit on the stack
-  lmp
-}
