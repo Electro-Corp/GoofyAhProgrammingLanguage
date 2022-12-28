@@ -2,6 +2,7 @@
 Goofy ahhhhhhhh <br>
 Table of Contents:
 > Users Guide
+> Reccomended appplication structure 
 ## IMPORTANT LINKS:
 Guide for the standard library: https://github.com/Electro-Corp/GoofyAhProgrammingLanguage/blob/main/stdlib/README.md#stdlib
 ## Users Guide
@@ -114,3 +115,13 @@ To import the file in the main source, use `include`. Example:
 ```
 include stdlib.gapl
 ```
+## Reccomended appplication structure 
+It is recommended to make programs like so:
+--- mainFile.gapl
+   --- functionFile1.gapl
+      --- subFunction1.gapl
+   --- functionFile2.gapl
+      --- subFunction2.gapl
+      --- subFunction3.gapl
+          --- subsubFunction1.gapl
+Only one file may have the `data` and `entry` namespace. All other files must be a function file. Any imports the functions may have must be imported in the main file.
