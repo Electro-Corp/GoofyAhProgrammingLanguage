@@ -12,4 +12,8 @@ This function requires the charstack to look like this:
 ```
 so.. do that ig
 #### `loadFileCharStack`
-Reads file into charstack.
+Reads file into charstack (filename must be pushed to the charstack first) Ex:
+```
+lchar hello.txt
+loadFileCharStack
+```
