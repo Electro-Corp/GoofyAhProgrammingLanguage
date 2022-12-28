@@ -41,13 +41,13 @@ entry{
 * wfile
 * lchar
 * lspecInd
-#### Push
+#### `push`
 Pushes an item to the stack
-#### Add/Sum
+#### `add`/`sum`
 To add, push two ints to the stack and then run `add` or `sub`. The result will be pushed to the output stack.
-#### Out
+#### `out`
 Prints the last item in the output stack
-#### Los
+#### `los`
 Sets a var to the last item on the output stack. Ex:
 ```
 let g 0
@@ -57,25 +57,25 @@ add
 // g will be 7
 los g
 ```
-#### CMP
+#### `cmp`
 Compares last two items on the stack. If they are equal, the condition bit is set to 1. Otherwise it is set to 0.
-#### JCB 
+#### `jcb`
 This will jump to the specified line if the condition bit is 1. Ex:
 ```
 // jumps to line 15 is compare bit is 1
 jcb 15
 ```
-#### Goto
+#### `goto`
 Goes to the specified line. Ex:
 ```
 goto 15
 ```
-#### lchar
+#### `lchar`
 Loads a char to the charstack. Ex:
 ```
 lchar hello!
 ```
-#### lspecInd
+#### `lspecInd`
 Pushes the char array at the specific index offset from the top provided (length - indexProvided) to the front of the char stack (note that the original is not removed) Ex:
 ```
 lchar Hey
@@ -84,7 +84,7 @@ lspecInd 2
 // Hey is now at the front at the back of the char stack
 ```
 ### NOTE: FOR FILES ITS RECOMMENDED TO USE THE STDLIB/FILEIO.GAPL for convenience
-#### lfile
+#### `lfile`
 Loads a file based on the last item on the charstack, with the specified mode. Ex:
 ```
 lchar helloworld.txt
@@ -94,11 +94,11 @@ Modes:
 * a = Append
 * w = Write
 * r = Read
-#### wfile
+#### `wfile`
 Appends to the current loaded file with the last item on the charstack. Ex:
 ```
 lchar helloworld.txt
-lfile
+lfile w
 lchar Hey!
 wfile
 ```
