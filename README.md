@@ -44,6 +44,7 @@ entry{
 * lspecInd
 * print
 * trchar
+* sload
 #### `push`
 Pushes an item to the stack
 #### `add`/`sum`
@@ -59,6 +60,13 @@ push 4
 add
 // g will be 7
 los g
+```
+#### `sload`
+Loads a specific item from the stack into the outstack.
+```
+sload 2
+trchar
+print
 ```
 #### `cmp`
 Compares last two items on the stack. If they are equal, the condition bit is set to 1. Otherwise it is set to 0.
