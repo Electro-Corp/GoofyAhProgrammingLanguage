@@ -42,6 +42,7 @@ entry{
 * wfile
 * lchar
 * lspecInd
+* print
 #### `push`
 Pushes an item to the stack
 #### `add`/`sum`
@@ -102,6 +103,12 @@ lchar helloworld.txt
 lfile w
 lchar Hey!
 wfile
+```
+#### `print`
+Outputs the last item on the charstack. Ex:
+```
+lchar Hello!
+print
 ```
 ### Creating your own functions
 To create your own function, create a seperate source file. Here it will be `stdlib.gapl`, a file part of the standard library.
