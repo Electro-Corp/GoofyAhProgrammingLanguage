@@ -43,6 +43,7 @@ entry{
 * lchar
 * lspecInd
 * print
+* trchar
 #### `push`
 Pushes an item to the stack
 #### `add`/`sum`
@@ -77,6 +78,20 @@ Loads a char to the charstack. Ex:
 ```
 lchar hello!
 ```
+#### `print`
+Outputs the last item on the charstack. Ex:
+```
+lchar Hello!
+print
+```
+#### `trchar`
+Transfers the last item on the stack to the charstack. Ex:
+```
+push 3
+trchar
+// will print 3
+print
+```
 #### `lspecInd`
 Pushes the char array at the specific index offset from the top provided (length - indexProvided) to the front of the char stack (note that the original is not removed) Ex:
 ```
@@ -104,12 +119,7 @@ lfile w
 lchar Hey!
 wfile
 ```
-#### `print`
-Outputs the last item on the charstack. Ex:
-```
-lchar Hello!
-print
-```
+
 ### Creating your own functions
 To create your own function, create a seperate source file. Here it will be `stdlib.gapl`, a file part of the standard library.
 To create a function, use the `func` syntax, like so: <br>
