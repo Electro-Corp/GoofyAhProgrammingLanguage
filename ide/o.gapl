@@ -1,0 +1,13 @@
+include stdlib/fileio.gapl
+include stdlib/stdlib.gapl
+
+data{
+	let goofy 8
+	let ahh 9
+}
+entry{
+	push goofy
+	push ahh
+	add
+	out
+}

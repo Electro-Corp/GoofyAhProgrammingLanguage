@@ -158,6 +158,12 @@ def parse(fileName):
       elif ("rfile" in lines[locY]):
         charstack.append(p.readlines())
         locY += 1 
+      #
+      # Print
+      #
+      elif("print" in lines[locY]):
+        print(charstack[len(charstack)-1])
+        locY+=1
       else:
         print("ERROR, "+lines[locY] +" is not a command.")
         print(lines[locY].strip(' ').split(" "))
@@ -185,7 +191,11 @@ def exc(ind):
         break
     g.write("}\n")
   parse("tmp.gapl")
-print("parsing file: "+sys.argv[1])
+try:
+  print("parsing file: "+sys.argv[1])
+except:
+  print("Error, file may not exist")
+  exit()
 try:
   parse(sys.argv[1])
 except Exception as e :

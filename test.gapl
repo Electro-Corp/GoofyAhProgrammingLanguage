@@ -30,4 +30,5 @@ entry{
   lchar test.txt
   // read file
   loadFileCharStack
+  print
 }

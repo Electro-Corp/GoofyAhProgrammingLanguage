@@ -1,3 +1,4 @@
+// Helpful functions
 func puts{
   // push 0 to the stack so when we add, it'll be the last two items on the stack, 0 and whatever var you wanted
   let tmp 0
