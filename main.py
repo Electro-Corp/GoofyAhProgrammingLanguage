@@ -164,6 +164,15 @@ def parse(fileName):
       elif("print" in lines[locY]):
         print(charstack[len(charstack)-1])
         locY+=1
+      elif("trchar" in lines[locY]):
+        charstack.append(str(stack[len(stack)-1]))
+        locY+=1
+      #
+      # Stack access
+      #
+      elif("sload" in lines[locY]):
+        outstack.append(int(lines[locY].strip(' ').split(" ")[1].strip('\n')))
+        locY += 1
       else:
         print("ERROR, "+lines[locY] +" is not a command.")
         print(lines[locY].strip(' ').split(" "))

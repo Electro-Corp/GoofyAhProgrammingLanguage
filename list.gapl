@@ -1,0 +1,23 @@
+data{
+  // define list size
+  let listsize 5
+  // define current item
+  let item 0
+  // add constant
+  let c 1
+}
+entry{
+  // load items
+  push item
+  push c
+  add
+  push listsize
+  los item
+  push item
+  cmp
+  jcb 19
+  goto 11
+  trchar
+  print
+  
+}
